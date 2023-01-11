@@ -1,0 +1,56 @@
+:host {
+  position: relative;
+  display: flex;
+}
+
+.zoom {
+  font: var(--tui-font-text-s);
+  border-radius: 16px;
+  background: rgba(104, 104, 104, 0.96);
+  color: var(--tui-text-01-night);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 192px;
+}
+
+.slider {
+  width: 120px;
+}
+
+.sign {
+  transition-property: background;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  color: var(--tui-text-01-night);
+
+  &:hover {
+    background: var(--tui-clear-inverse-hover);
+  }
+
+  &[disabled] {
+    opacity: var(--tui-disabled-opacity);
+  }
+
+  &_minus {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &_plus {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.ghost-dot {
+  position: absolute;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.invisible {
+  visibility: hidden;
+}

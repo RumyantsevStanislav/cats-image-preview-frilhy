@@ -1,0 +1,56 @@
+<header class="header">
+  <h1>
+    <img
+      src="https://raw.githubusercontent.com/TinkoffCreditSystems/taiga-ui/1c73e97155678e2616726866484db8ccad4cdb4f/projects/demo/src/assets/images/taiga.svg"
+      alt="taiga ui logo"
+      width="24"
+    />
+    Taiga UI
+  </h1>
+
+  <iframe
+    src="https://ghbtns.com/github-btn.html?user=TinkoffCreditSystems&repo=taiga-ui&type=star&count=true&size=large"
+    frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+</header>
+
+<tui-root>
+  <section class="picker">
+    <button
+      *ngFor="let cat of cats; let index = index"
+      tuiButton
+      size="m"
+      class="tui-space_right-2"
+      (click)="onCatIndexChange(index)"
+    >
+      Cat {{index + 1}}
+    </button>
+
+    <label class="with-description-toggle">
+      <tui-toggle size="l" [(ngModel)]="withDescription"></tui-toggle>
+      With description
+    </label>
+  </section>
+
+  <preview class="preview tui-space_top-5" [rotatable]="true">
+    <ng-container *ngIf="cats.length; else fallback">
+      <img width="500" [src]="cats[activeCat]" />
+      <p *ngIf="withDescription">
+        Cool cat #{{activeCat + 1}}
+      </p>
+    </ng-container>
+    <ng-template #fallback>
+      No cats, no party...
+    </ng-template>
+
+    <preview-pagination [lastIndex]="cats.length - 1" [(index)]="activeCat"></preview-pagination>
+
+    <preview-title>cat{{activeCat + 1}}.jpg</preview-title>
+
+    <preview-action title="like" icon="tuiIconHeart" (click)="likeCat(activeCat)"></preview-action>
+    <preview-action title="remove" icon="tuiIconTrash" (click)="removeCat(activeCat)"></preview-action>
+  </preview>
+
+  <p *ngIf="liked.length">
+    Liked cats: {{liked}}
+  </p>
+</tui-root>

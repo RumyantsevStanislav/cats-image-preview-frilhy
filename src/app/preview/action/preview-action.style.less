@@ -1,0 +1,26 @@
+:host {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.button {
+  border-radius: 16px;
+  background: rgba(104, 104, 104, 0.96);
+  color: var(--tui-text-01-night);
+  transition-property: background;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    background: rgba(159, 159, 159, 0.86);
+  }
+
+  :host:not([data-size='fullscreen']) & {
+    animation: tuiFadeIn 0.3s;
+  }
+
+  :host:not([data-size='fullscreen']).ng-animating & {
+    display: none;
+  }
+}
